@@ -54,7 +54,7 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc){
   // µãÁÁLEDµÆ
   HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_7);
   // Ê¹·äÃùÆ÷·¢Éù1.5Ãë
-  Buzzer_Beep(190,1500,1);
+  Buzzer_Beep(190,15000,1);
 }
 
 

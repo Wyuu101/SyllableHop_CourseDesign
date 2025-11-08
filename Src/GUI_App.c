@@ -236,7 +236,8 @@ void GRAPHICS_MainTask(void) {
      }
      // 控制基于Systick的蜂鸣器，主要用于按键音效和闹钟提示
      // 判断如果当前发声时间已足够，则执行结束发声的操作
-     if (buzzer.isBeeping && HAL_GetTick() > buzzer.endTime) {
+     // 如果闹钟响起并且由用户手动关闭，也接收发声操作
+     if ((buzzer.isBeeping && HAL_GetTick() > buzzer.endTime) ||(buzzer.isBeeping && buzzer.isCalledByAlarm && !isAlarmEnabled )) {
        // 占空比设为0，关闭声音
        __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 0);
        // 修改标志位
